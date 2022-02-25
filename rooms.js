@@ -8,7 +8,7 @@ const createRoom = (details) => {
     id,
     isPrivate: details.isPrivate,
     password: details.password,
-    users: [],
+    users: [{ name: "admin", socketID: "admin" }],
   };
   rooms.push(room);
   const { password, ...roomDetails } = room;

@@ -80,6 +80,11 @@ io.on("connection", (socket) => {
         text: `${userName} has left!`,
       });
     }
+
+    io.to(roomDetails.id).emit("roomData", {
+      room: roomDetails.id,
+      users: getUsersInRoom(roomDetails.id),
+    });
     callback(roomDetails);
   });
 });

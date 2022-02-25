@@ -15,6 +15,13 @@ const createRoom = (details) => {
   return roomDetails;
 };
 
+const removeRoom = (id) => {
+  const roomIndex = rooms.findIndex((room) => room.id === id);
+  if (roomIndex !== -1) {
+    rooms.splice(roomIndex, 1);
+  }
+};
+
 const getRoom = (id) => {
   return rooms.find((room) => room.id === id);
 };
@@ -65,6 +72,7 @@ const getUsersInRoom = (roomID) => {
 
 module.exports = {
   createRoom,
+  removeRoom,
   getRoom,
   checkPassword,
   addUserToRoom,

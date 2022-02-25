@@ -5,9 +5,7 @@ const cors = require("cors");
 
 // Import room functions from rooms.js
 const {
-  createRoom,
-  getRoom,
-  checkPassword,
+  removeRoom,
   addUserToRoom,
   removeUserFromRoom,
   getUsersInRoom,
@@ -85,6 +83,10 @@ io.on("connection", (socket) => {
       room: roomDetails.id,
       users: getUsersInRoom(roomDetails.id),
     });
+
+    if (roomDetails.users.length === 1) {
+      removeRoom(roomDetails.id);
+    }
     callback(roomDetails);
   });
 });

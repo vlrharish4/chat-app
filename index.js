@@ -71,6 +71,7 @@ io.on("connection", (socket) => {
   });
 
   socket.on("removeUser", ({ roomID, userName }, callback) => {
+    console.log("Remove User");
     const { roomDetails, error } = removeUserFromRoom(roomID, userName);
     if (roomDetails) {
       io.to(roomDetails.id).emit("message", {
